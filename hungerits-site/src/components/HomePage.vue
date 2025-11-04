@@ -1,8 +1,8 @@
 <template>
     <div>
         <h1>Hungerits</h1>
-        <a href="Cardapio.html" class="btn">Ver Cardapio</a>
-        <a href="Pedidos_andamento.html" class="btn">Ver Pedidos em Andamento</a>
+        <button @click="$router.push({name: 'cardapio'})" class="btn">Ver Cardapio</button>
+        <button @click="$router.push({name: 'pedidos-andamento'})" class="btn">Ver Pedidos em Andamento</button>
     </div>
 </template>
 

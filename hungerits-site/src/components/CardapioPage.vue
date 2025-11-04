@@ -1,9 +1,9 @@
+
+
 <template>
     <div>
         <header class="header">
-            <a href="Home.html" class="back-button">
-            <i class="fas fa-arrow-left"></i>
-            </a>
+            <BackButton backto="home" />
             <h1 class="logo">Hungerits</h1>
         </header>
     
@@ -55,12 +55,27 @@
                 <button class="add-button">+</button>
             </div>
             
-            <a href="Pagamento.html" class="finish-order">
-                Finalizar Pedido <i class="fas fa-arrow-right"></i>
-            </a>
+            <AdvanceButton advto="pagamento" />
         </div>
     </div>
 </template>
+
+
+<script>
+import AdvanceButton from './botoes/AdvanceButton.vue';
+import BackButton from './botoes/BackButton.vue';
+
+
+export default {
+    name: 'CardapioPage',
+    components: {
+        BackButton,
+        AdvanceButton
+    }
+}
+
+</script>
+
 <style>
 * {
     margin: 0;
@@ -78,13 +93,6 @@ body {
     align-items: center;
     padding: 20px;
     background-color: white;
-}
-
-.back-button {
-    color: #333;
-    text-decoration: none;
-    margin-right: 15px;
-    font-size: 24px;
 }
 
 .logo {

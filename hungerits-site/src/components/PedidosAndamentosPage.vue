@@ -1,8 +1,10 @@
+
+
 <template>
 <body>
     <div class="wrap">
         <header class="header">
-            <a class="back" href="Home.html">←</a>
+            <BackButton backto="home" />
             <h1 class="logo">Hungerits</h1>
         </header>
 
@@ -37,3 +39,17 @@
     </div>
 </body>
 </template>
+
+
+<script>
+import BackButton from './botoes/BackButton.vue';
+
+
+export default {
+    name: 'PedidosAndamentosPage',
+    components: {
+        BackButton
+    }
+}
+
+</script>

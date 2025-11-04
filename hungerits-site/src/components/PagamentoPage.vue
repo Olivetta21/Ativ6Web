@@ -2,7 +2,7 @@
 <body>
     <div class="container">
         <header class="header">
-            <a class="back" href="Home.html">←</a>
+            <BackButton backto="home" />
             <h1 class="logo">Hungerits </h1>
         </header>
 
@@ -43,6 +43,21 @@
     </div>
 </body>
 </template>
+
+
+
+<script>
+import BackButton from './botoes/BackButton.vue';
+
+
+export default {
+    name: 'PagamentoPage',
+    components: {
+        BackButton
+    }
+}
+
+</script>
 
 <style>
     :root{
