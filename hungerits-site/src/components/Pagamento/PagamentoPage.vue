@@ -2,7 +2,7 @@
 <body>
     <div class="container">
         <header class="header">
-            <BackButton backto="home" />
+            <button @click="$router.push({name: 'home'})"><SetaButton dir="left"/></button>
             <h1 class="logo">Hungerits </h1>
         </header>
 
@@ -38,7 +38,7 @@
                 </label>
             </form>
 
-            <a class="confirm" href="Confirmacao.html">Confirmar Pedido</a>
+            <button class="confirm" @click="confirmarPedido">Confirmar Pedido</button>
         </section>
     </div>
 </body>
@@ -47,13 +47,13 @@
 
 
 <script>
-import BackButton from './botoes/BackButton.vue';
+import SetaButton from '../botoes/SetaButton.vue';
 
 
 export default {
     name: 'PagamentoPage',
     components: {
-        BackButton
+        SetaButton
     }
 }
 

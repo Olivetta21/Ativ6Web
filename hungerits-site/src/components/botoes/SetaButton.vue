@@ -1,27 +1,28 @@
 <template>
-    <a @click="$router.push({ name: backto })" class="back-button">
-        <i class="fas fa-arrow-left"></i>
+    <a class="seta-button">
+        <i v-if="dir === 'right'" class="fas fa-arrow-right"></i>
+        <i v-else class="fas fa-arrow-left"></i>
     </a>
 </template>
 
 <script>
 export default {
-    name: 'BackButton',
+    name: 'SetaButton',
     props: {
-        backto: String
+        dir: String
     }
 }
 
 </script>
 
 <style scoped>
-.back-button {
+.seta-button {
     color: #333;
     text-decoration: none;
     margin-right: 15px;
     font-size: 24px;
 }
-.back-button:hover {
+.seta-button:hover {
     color: #EF2A39;
 }
 </style>

@@ -19,6 +19,11 @@ body {
     font-family: 'Inter', sans-serif;
 }
 
+button {
+    background-color: transparent;
+    border: none;
+}
+
 h1 {
     font-family: 'Lobster', cursive;
     font-size: 45px;
@@ -34,6 +39,7 @@ h1 {
     text-decoration: none;
     padding: 15px 30px;
     border-radius: 50px;
+    border: none;
     font-family: 'Inter', sans-serif;
     font-size: 18px;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);

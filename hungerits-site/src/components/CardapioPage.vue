@@ -3,7 +3,7 @@
 <template>
     <div>
         <header class="header">
-            <BackButton backto="home" />
+            <button ><SetaButton dir="left" @click="$router.push({name: 'home'})"/></button>
             <h1 class="logo">Hungerits</h1>
         </header>
     
@@ -15,62 +15,38 @@
         </nav>
 
         <div class="products-grid">
-            <div class="product-card">
-                <img src="imagem do produto" alt="foto lanche aqui" class="imagem do produto">
-                <h3 class="titulo do produto">Nome do Lanche Aqui</h3>
-                <div class="estrelas avaliacao">
+            <div class="product-card" v-for="(prato, i) in Cardapio.pratos" :key="i">
+                <img class="product-image" :src="prato.imagem" alt="foto">
+                <h3 class="product-title">{{ prato.nome }}</h3>
+                <div class="product-rating">
                     <span class="star">★</span>
-                    <span class="nota">4.9</span>
+                    <span class="nota">5</span>
                 </div>
-                <button class="add-button">+</button>
-            </div>
-            
-            <div class="product-card">
-                <img src="imagem do produto" alt="foto lanche aqui" class="imagem do produto">
-                <h3 class="titulo do produto">Nome do Lanche Aqui</h3>
-                <div class="estrelas avaliacao">
-                    <span class="star">★</span>
-                    <span class="nota">4.8</span>
-                </div>
-                <button class="add-button">+</button>
+                <h3 class="product-price">{{ prato.preco }}</h3>
+                <button class="add-button" @click="Cardapio.inserirNaSacola(i)">+</button>
             </div>
 
-            <div class="product-card">
-                <img src="imagem do produto" alt="foto lanche aqui" class="imagem do produto">
-                <h3 class="titulo do produto">Nome do Lanche Aqui</h3>
-                <div class="estrelas avaliacao">
-                    <span class="star">★</span>
-                    <span class="nota">4.1</span>
-                </div>
-                <button class="add-button">+</button>
-            </div>
-
-            <div class="product-card">
-                <img src="imagem do produto" alt="foto lanche aqui" class="imagem do produto">
-                <h3 class="titulo do produto">Nome do Lanche Aqui</h3>
-                <div class="estrelas avaliacao">
-                    <span class="star">★</span>
-                    <span class="nota">4.5</span>
-                </div>
-                <button class="add-button">+</button>
-            </div>
-            
-            <AdvanceButton advto="pagamento" />
+            <button class="btn" @click="Cardapio.finalizarPedido()">Finalizar pedido {{ Sacola.valorTotal }} ({{ Sacola.quantidade }})<SetaButton dir="right" /></button>
         </div>
     </div>
 </template>
 
 
 <script>
-import AdvanceButton from './botoes/AdvanceButton.vue';
-import BackButton from './botoes/BackButton.vue';
-
+import SetaButton from './botoes/SetaButton.vue';
+import Cardapio from './Cardapio/Cardapio';
+import Sacola from './Cardapio/Sacola';
 
 export default {
     name: 'CardapioPage',
+    data() {
+        return {
+            Sacola,
+            Cardapio
+        }
+    },
     components: {
-        BackButton,
-        AdvanceButton
+        SetaButton
     }
 }
 
