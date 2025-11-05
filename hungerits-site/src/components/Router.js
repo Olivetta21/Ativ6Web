@@ -2,7 +2,7 @@ import { createRouter, createWebHistory } from 'vue-router'
 
 
 import HomePage from './HomePage.vue'
-import CardapioPage from './CardapioPage.vue'
+import CardapioPage from './Cardapio/CardapioPage.vue'
 import PedidosAndamentosPage from './PedidosAndamento/PedidosAndamentosPage.vue'
 import PagamentoPage from './Pagamento/PagamentoPage.vue'
 import LoginPage from './Login/LoginPage.vue'

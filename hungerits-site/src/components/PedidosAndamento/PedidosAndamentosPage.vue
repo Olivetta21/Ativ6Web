@@ -21,7 +21,7 @@
             <div v-else-if="PedidosAndamento.alterando">alterar</div>
         </div>
 
-        <div class="list">
+        <div class="list" v-if="PedidosAndamento.alterandoIdx < 0">
             <div class="item" v-for="(pedido, idx) in PedidosAndamento.pedidos" :key="pedido.pedido_num">
                 <div class="pedido">{{ pedido.pedido_num }}</div>
                 <div class="status">{{ pedido.pedido_status }}</div>
@@ -34,9 +34,23 @@
                     <button v-else @click="PedidosAndamento.desmarcarCancelarPedido(idx)">[ X ]</button>
                 </div>
                 <div v-else-if="PedidosAndamento.alterando">
-                    <button @click="PedidosAndamento.alterarPedido(pedido.pedido_num)">Alterar</button>
+                    <button @click="PedidosAndamento.marcarAlterarPedido(idx)">Alterar</button>
                 </div>
             </div>
+        </div>
+
+        <div v-else>
+            <label for="status">Status</label>
+            <input type="text" id="status" v-model="altstatus" />
+            <label for="prato">Prato</label>
+            <input type="number" id="prato" v-model="altprato" />
+            <label for="mesa">Mesa</label>
+            <input type="number" id="mesa" v-model="altmesa" />
+            <label for="usuario">Usuario</label>
+            <input type="number" id="usuario" v-model="altusuario" />
+            <label for="preco">Preço</label>
+            <input type="number" id="preco" v-model="altpreco" />
+            <button @click="PedidosAndamento.alterarPedido(PedidosAndamento.pedidos[PedidosAndamento.alterandoIdx].pedido_num, altstatus, altprato, altmesa, altusuario, altpreco)">Confirmar</button>
         </div>
     </div>
 
@@ -44,10 +58,10 @@
         <button v-if="!PedidosAndamento.alterando" class="btn" @click="PedidosAndamento.cancelando = !PedidosAndamento.cancelando">
             {{ PedidosAndamento.cancelando ? 'desistir' : 'Cancelar Pedidos' }}
         </button>
-        <button v-if="!PedidosAndamento.cancelando" class="btn" @click="PedidosAndamento.alterando = !PedidosAndamento.alterando">
+        <button v-if="!PedidosAndamento.cancelando" class="btn" @click="PedidosAndamento.alterando ? PedidosAndamento.desmarcarAlterarPedido() : PedidosAndamento.alterando = true">
             {{ PedidosAndamento.alterando ? 'desistir' : 'Alterar Pedidos' }}
         </button>
-        <button v-else class="btn" >Confirmar Cancelamento</button>
+        <button v-else class="btn" @click="PedidosAndamento.cancelarPedidos()" >Confirmar Cancelamento</button>
     </div>
 </body>
 </template>
@@ -62,11 +76,23 @@ export default {
     name: 'PedidosAndamentosPage',
     data() {
         return {
-            PedidosAndamento
+            PedidosAndamento,
+
+            altstatus: '',
+            altprato: '',
+            altmesa: '',
+            altusuario: '',
+            altpreco: ''
         }
     },
     components: {
         SetaButton
+    },
+    beforeMount() {
+        PedidosAndamento.carregarPedidos();
+    },
+    beforeUnmount() {
+        PedidosAndamento.limparPedidos();
     }
 }
 

@@ -16,6 +16,7 @@
 </template>
 
 <script>
+import Login from './Login';
 import Usuario from './Usuario';
 
 export default {
@@ -27,16 +28,20 @@ export default {
         };
     },
     methods: {
-        handleLogin() {
-            console.log(`Usuário: ${this.username}, Senha: ${this.password}`);
-            //mock
-            Usuario.info = {
-                id: '1',
-                nome: this.username,
-                email: this.username + '@example.com',
-                admin: 'true'
-            };
-            this.$router.push({ name: 'home' });
+        async handleLogin() {
+            var res = await Login.login(this.username, this.password);
+            if (res.success) {
+                let usr = res.data[0];
+
+                Usuario.info = {
+                    id: usr.id,
+                    nome: usr.nome,
+                    email: usr.email,
+                    admin: usr.admin
+                };
+
+                this.$router.push({ name: 'home' });
+            }
         }
     }
 }

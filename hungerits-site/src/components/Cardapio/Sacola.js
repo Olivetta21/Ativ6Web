@@ -16,6 +16,13 @@ class Sacola {
 
     static get pratos() {return this._pratos;}
 
+
+    static limparSacola() {
+        this._pratos = [];
+        this._quantidade.value = 0;
+        this._valorTotal.value = 0;
+    }
+
 }
 
 export default Sacola;

@@ -13,7 +13,7 @@ $login = $cred['login'];
 $senha = $cred['senha'];
 
 try {
-    $stmt = $pdo->prepare("select id, nome, email, admin from usuariuo where login = ? and senha = ?");
+    $stmt = $pdo->prepare("select id, nome, email, admin from usuario where nome = ? and senha = ?");
     $stmt->execute([$login, $senha]);
     $res = $stmt->fetchAll(PDO::FETCH_ASSOC);
 
