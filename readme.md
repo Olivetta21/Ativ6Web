@@ -1,3 +1,3 @@
-# Entrega 2
+# Entrega 3
 
-## Nesta entrega mostramos o resultado do planejamento 1, e na próxima entrega vamos deixar a tela do site pronta para uso, começando pelo design, montando a estrutura HTML e enfeitando com o CSS.
+## Nesta entrega refatoramos o site para o framework Vue.js e concluímos a comunicação do front com o backend. Na próxima entrega iremos deixar o site mais amigável e com melhorías gerais.
