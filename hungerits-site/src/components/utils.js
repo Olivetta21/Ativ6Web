@@ -1,11 +1,11 @@
 
 
 export function tratarRetornoApi(r) {
-    if (r["error"]) {
+    if (r?.error) {
         console.error("Error:", r.error);
-    } else if (r["info"]) {
+    } else if (r?.info) {
         console.warn("Info:", r.info);
-    } else if (r["success"]) {
+    } else if (r?.success) {
         console.log("Success:", r.success);
     } else {
         console.log("Response:", r);

@@ -1,6 +1,8 @@
 import { ref } from "vue";
 
 class Usuario {
+    static logado = false;
+
     static _info = ref(
         {
             id: '',

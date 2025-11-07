@@ -59,14 +59,7 @@ export default {
 
 </script>
 
-<style>
-    :root{
-        --red: #EF2A39;
-        --brown: #3C2F2F;
-        --bg: #fff;
-        --muted: #9b9b9b;
-    }
-
+<style scoped>
     *{box-sizing:border-box;margin:0;padding:0}
     body{font-family:'Inter',sans-serif;background:#f7f7f7;color:#222;min-height:100vh}
 

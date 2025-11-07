@@ -1,5 +1,7 @@
 import { fetchJson } from "../Fetcher";
+import router from "../Router";
 import { tratarRetornoApi } from "../utils";
+import Usuario from "./Usuario";
 
 
 class Login {
@@ -18,6 +20,17 @@ class Login {
         }
 
         return r;
+    }
+
+    static sair() {
+        Usuario.info = 
+        {
+            id: '',
+            nome: '',
+            email: '',
+            admin: ''
+        };
+        router.push({name: 'login'});
     }
 }
 

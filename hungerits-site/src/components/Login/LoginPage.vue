@@ -30,7 +30,7 @@ export default {
     methods: {
         async handleLogin() {
             var res = await Login.login(this.username, this.password);
-            if (res.success) {
+            if (res?.success) {
                 let usr = res.data[0];
 
                 Usuario.info = {

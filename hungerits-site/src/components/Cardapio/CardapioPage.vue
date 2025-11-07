@@ -1,10 +1,10 @@
 
 
 <template>
-    <div>
+    <div class="cardapio-page">
         <header class="header">
             <button ><SetaButton dir="left" @click="$router.push({name: 'home'})"/></button>
-            <h1 class="logo">Hungerits</h1>
+            <h1 class="logo">Cardapio</h1>
         </header>
     
         <nav class="nav-menu">
@@ -22,11 +22,14 @@
                     <span class="star">★</span>
                     <span class="nota">5</span>
                 </div>
-                <h3 class="product-price">{{ prato.preco }}</h3>
+                <h3 class="product-price">R$ {{ prato.preco.toFixed(2) }}</h3>
                 <button class="add-button" @click="Cardapio.inserirNaSacola(i)">+</button>
             </div>
+        </div>
 
-            <button class="btn" @click="Cardapio.finalizarPedido()">Finalizar pedido {{ Sacola.valorTotal }} ({{ Sacola.quantidade }})<SetaButton dir="right" /></button>
+        <div>
+            <button class="btn" @click="Cardapio.finalizarPedido()">Finalizar pedido R$ {{ Sacola.valorTotal.toFixed(2) }} ({{ Sacola.quantidade }} itens)<SetaButton dir="right" /></button>
+            <button class="btn" v-if="Sacola.quantidade > 0" @click="Sacola.limparSacola()">Limpar sacola</button>
         </div>
     </div>
 </template>
@@ -61,16 +64,13 @@ export default {
 
 </script>
 
-<style>
-* {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-    font-family: 'Inter', sans-serif;
-}
-
-body {
-    background-color: #f5f5f5;
+<style scoped>
+.cardapio-page {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 100%;
 }
 
 .header {
@@ -116,7 +116,6 @@ body {
     grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
     gap: 20px;
     padding: 20px;
-    margin-bottom: 80px;
 }
 
 .product-card {

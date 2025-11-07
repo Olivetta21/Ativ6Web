@@ -5,10 +5,9 @@
     <div class="wrap">
         <header class="header">
             <button @click="$router.push({name: 'home'})"><SetaButton dir="left"/></button>
-            <h1 class="logo">Hungerits</h1> 
+            <h1>Pedidos Confirmados</h1>
         </header>
 
-        <h2>Pedidos Confirmados</h2>
 
         <div class="table-head">
             <div>Numero do Pedido</div>
@@ -30,16 +29,16 @@
                 <div class="mesa">{{ pedido.mesa_id }}</div>
                 <div class="cliente">{{ pedido.cliente_nome }}</div>
                 <div v-if="PedidosAndamento.cancelando">
-                    <button v-if="!pedido.cancelando" @click="PedidosAndamento.marcarCancelarPedido(idx)">[ . ]</button>
-                    <button v-else @click="PedidosAndamento.desmarcarCancelarPedido(idx)">[ X ]</button>
+                    <button v-if="!pedido.cancelando" @click="PedidosAndamento.marcarCancelarPedido(idx)">⏹️</button>
+                    <button v-else @click="PedidosAndamento.desmarcarCancelarPedido(idx)">❌</button>
                 </div>
                 <div v-else-if="PedidosAndamento.alterando">
-                    <button @click="PedidosAndamento.marcarAlterarPedido(idx)">Alterar</button>
+                    <button @click="PedidosAndamento.marcarAlterarPedido(idx)">✏️</button>
                 </div>
             </div>
         </div>
 
-        <div v-else>
+        <div v-else class="altpedido">
             <label for="status">Status</label>
             <input type="text" id="status" v-model="altstatus" />
             <label for="prato">Prato</label>
@@ -50,7 +49,7 @@
             <input type="number" id="usuario" v-model="altusuario" />
             <label for="preco">Preço</label>
             <input type="number" id="preco" v-model="altpreco" />
-            <button @click="PedidosAndamento.alterarPedido(PedidosAndamento.pedidos[PedidosAndamento.alterandoIdx].pedido_num, altstatus, altprato, altmesa, altusuario, altpreco)">Confirmar</button>
+            <button class="btn" @click="PedidosAndamento.alterarPedido(PedidosAndamento.pedidos[PedidosAndamento.alterandoIdx].pedido_num, altstatus, altprato, altmesa, altusuario, altpreco)">Confirmar</button>
         </div>
     </div>
 
@@ -99,13 +98,7 @@ export default {
 </script>
 
 
-<style>
-body {
-    font-family: Arial, sans-serif;
-    background-color: #f5f5f5;
-    margin: 0;
-    padding: 0;
-}
+<style scoped>
 .wrap {
     max-width: 600px;
     margin: 20px auto;
@@ -150,6 +143,18 @@ h2 {
 .list .item .name, .list .item .status {
     flex: 1;
     text-align: center;
+}
+.list>.item {
+    overflow-wrap: anywhere;
+}
+.altpedido {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    margin: 20px 0;
+}
+.item>div {
+    padding: 10px;
 }
 .actions {
     text-align: center;
