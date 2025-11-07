@@ -4,6 +4,7 @@ import Usuario from "../Login/Usuario";
 import router from "../Router";
 import { fetchJson } from "../Fetcher";
 import { tratarRetornoApi } from "../utils";
+import ToastMessage from "../ToastMessage/ToastMessage";
 
 
 class Cardapio {
@@ -25,10 +26,11 @@ class Cardapio {
             return;
         }
 
-        console.log("Cardapio recebido: ", r.cardapio);
         r.cardapio.forEach((prato) => {
             this.adicionarPrato(prato.id, prato.nome, parseFloat(prato.preco), 'img');
         });
+
+        ToastMessage.info("Cardápio carregado com sucesso!");
 
         return;
     }
@@ -57,9 +59,9 @@ class Cardapio {
             return;
         }
 
-        console.log(r.success);
         Sacola.limparSacola();
-
+        ToastMessage.success(r.success);
+        
         router.push({name: 'pagamento'});
     }
 }

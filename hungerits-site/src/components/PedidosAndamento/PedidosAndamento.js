@@ -1,6 +1,7 @@
 import { ref } from "vue";
 import { tratarRetornoApi } from "../utils";
 import { fetchJson } from "../Fetcher";
+import ToastMessage from "../ToastMessage/ToastMessage";
 
 
 class PedidosAndamento {
@@ -50,7 +51,7 @@ class PedidosAndamento {
                 tratarRetornoApi(r);
                 return;
             }
-            console.log(r.success);
+            ToastMessage.success(r.success);
             this.limparPedidos();
             await this.carregarPedidos();
             return;
@@ -78,7 +79,7 @@ class PedidosAndamento {
                 tratarRetornoApi(r);
                 return;
             }
-            console.log(r.success);
+            ToastMessage.success(r.success);
             this.limparPedidos();
             await this.carregarPedidos();
             this.desmarcarAlterarPedido();

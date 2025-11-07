@@ -1,8 +1,9 @@
+import ToastMessage from "./ToastMessage/ToastMessage";
 
 export async function fetchJson(endereco, arrayValores){
     //[{"h": "head", "b": "body"}]
     if (arrayValores && !Array.isArray(arrayValores)) {
-        console.error("fetchjson: arrayValores deve ser um array");
+        ToastMessage.error("fetchjson: arrayValores deve ser um array");
         return null;
     }
 
@@ -27,11 +28,11 @@ export async function fetchJson(endereco, arrayValores){
             return result;
         }
         catch (error) {
-            console.error("fetchjson-json", response);
+            ToastMessage.error("fetchjson-json", response);
         }
         
     } catch (error) {
-        console.error("fetchjson", error);
+        ToastMessage.error("fetchjson", error);
     }
 
     return null;

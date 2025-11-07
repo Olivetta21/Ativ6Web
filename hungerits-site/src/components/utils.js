@@ -1,13 +1,16 @@
+import ToastMessage from "./ToastMessage/ToastMessage";
 
 
 export function tratarRetornoApi(r) {
     if (r?.error) {
-        console.error("Error:", r.error);
+        ToastMessage.error(`Error: ${r.error}`);
+    }  else if (r?.warn) {
+        ToastMessage.warn(`Warning: ${r.warn}`);
     } else if (r?.info) {
-        console.warn("Info:", r.info);
+        ToastMessage.info(`Info: ${r.info}`);
     } else if (r?.success) {
-        console.log("Success:", r.success);
+        ToastMessage.success(`Success: ${r.success}`);
     } else {
-        console.log("Response:", r);
+        ToastMessage.add(`Response: ${r}`);
     }
 }

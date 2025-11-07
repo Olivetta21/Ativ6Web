@@ -1,5 +1,6 @@
 import { fetchJson } from "../Fetcher";
 import router from "../Router";
+import ToastMessage from "../ToastMessage/ToastMessage";
 import { tratarRetornoApi } from "../utils";
 import Usuario from "./Usuario";
 
@@ -19,6 +20,7 @@ class Login {
             return null;
         }
 
+        ToastMessage.success("Login realizado com sucesso!");
         return r;
     }
 
@@ -30,6 +32,8 @@ class Login {
             email: '',
             admin: ''
         };
+
+        ToastMessage.info("Você saiu da sua conta.");
         router.push({name: 'login'});
     }
 }

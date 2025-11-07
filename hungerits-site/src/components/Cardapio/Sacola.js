@@ -1,4 +1,5 @@
 import { ref } from "vue";
+import ToastMessage from "../ToastMessage/ToastMessage";
 
 class Sacola {
     static _quantidade = ref(0);
@@ -21,6 +22,8 @@ class Sacola {
         this._pratos = [];
         this._quantidade.value = 0;
         this._valorTotal.value = 0;
+
+        ToastMessage.info("Sacola esvaziada.");
     }
 
 }

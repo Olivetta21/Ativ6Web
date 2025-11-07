@@ -1,11 +1,17 @@
 <template>
+  <ToastsMessages />
   <RouterView/>
 </template>
 
 <script>
+import ToastsMessages from './components/ToastMessage/ToastsMessages.vue';
+
 
 export default {
-  name: 'App'
+  name: 'App',
+  components: {
+    ToastsMessages
+  }
 }
 </script>
 
